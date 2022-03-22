@@ -1,51 +1,35 @@
 /**
- * Represents a book.
+ * Represents a menu item.
  * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
+ * @param {string} name - 메뉴 이름
+ * @param {integer} price - 메뉴 가격
+ * @param {integer} quantity - 메뉴 개수
  */
-function Book(title, author) {}
-
-/**
- * Both of these will link to the bar function.
- * @see {@link bar}
- * @see bar
- */
-function foo() {}
-
-// Use the inline {@link} tag to include a link within a free-form description.
-/**
- * @see {@link foo} for further information.
- * @see {@link http://github.com|GitHub}
- */
-function bar() {}
-
-/**
- * Generic dairy product.
- * @constructor
- */
-function DairyProduct() {}
-
-/**
- * Check whether the dairy product is solid at room temperature.
- * @abstract
- * @return {boolean}
- */
-DairyProduct.prototype.isSolid = function () {
-	throw new Error('must be implemented by subclass!');
+const MenuItem = {
+  name: "",
+  price: 0,
+  quantity: 0,
 };
 
 /**
- * Cool, refreshing milk.
+ * Represents a vending machine
  * @constructor
- * @augments DairyProduct
+ * @param {Array} menuItems - 자판기에 추가할 메뉴들
  */
-function Milk() {}
+class VendingMachine {
+  constructor(menuItems) {}
 
-/**
- * Check whether milk is solid at room temperature.
- * @return {boolean} Always returns false.
- */
-Milk.prototype.isSolid = function () {
-	return false;
-};
+  /**
+   * 가격으로 아이템의 정보를 가져온다.
+   * @abstract
+   * @return {MenuItem}
+   */
+  getPriceReturnsItem(price) {}
+
+  /**
+   * 아이템을 구매한 결과를 알려준다.
+   * @abstract
+   * @return {String}
+   */
+  getItem(price) {}
+}
